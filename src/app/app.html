@@ -1,0 +1,39 @@
+<app-head-bar> </app-head-bar>
+<app-filter-panel (onFilterChange)="onFilterChange($event)"> </app-filter-panel>
+<app-search-bar
+  [autos]="filteredAutos"
+  [favorites]="favorites"
+  (onSelectCar)="selectCar($event)"
+  (onToggleFavorite)="toggleFavorite($event)">
+</app-search-bar>
+
+
+@if (selectedCar) {
+  <div class="car-modal-backdrop" (click)="closeSelectedCar()">
+    <section class="car-modal" role="dialog" aria-modal="true"
+             [attr.aria-label]="selectedCar.brand + ' ' + selectedCar.model + ' details'"
+             (click)="$event.stopPropagation()">
+      <button class="modal-close" type="button" (click)="closeSelectedCar()"
+              aria-label="Close car details">&times;</button>
+
+      <div class="car-modal-image">
+        <img [src]="'images/' + selectedCar.photo"
+             [alt]="selectedCar.brand + ' ' + selectedCar.model">
+      </div>
+
+      <div class="car-modal-info">
+        <p class="modal-eyebrow">VEHICLE DETAILS</p>
+        <h2>{{ selectedCar.brand }} {{ selectedCar.model }}</h2>
+        <p class="description">{{ selectedCar.description }}</p>
+
+        <ul>
+          <li><span>Power</span><strong>{{ selectedCar.power }}</strong></li>
+          <li><span>Price</span><strong>{{ selectedCar.price }} DNT</strong></li>
+          <li><span>Available vehicles</span><strong>{{ selectedCar.availability }}</strong></li>
+        </ul>
+
+        <button class="modal-done" type="button" (click)="closeSelectedCar()">Back to vehicles</button>
+      </div>
+    </section>
+  </div>
+}

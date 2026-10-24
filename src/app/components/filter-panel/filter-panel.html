@@ -1,0 +1,27 @@
+<div class="panel">
+  <div class="field">
+    <label>Max price (DNT)</label>
+    <input #maxPrice type="number" min="0" placeholder="ex: 300"
+           (keyup.enter)="apply(maxPrice.value, minPower.value, sort.value)">
+  </div>
+
+  <div class="field">
+    <label>Min power</label>
+    <input #minPower type="number" min="0" placeholder="ex: 10"
+           (keyup.enter)="apply(maxPrice.value, minPower.value, sort.value)">
+  </div>
+
+  <div class="field">
+    <label>Sort by</label>
+    <select #sort>
+      <option value="none">Default</option>
+      <option value="price-asc">Price: low to high</option>
+      <option value="price-desc">Price: high to low</option>
+      <option value="power-asc">Power: low to high</option>
+      <option value="power-desc">Power: high to low</option>
+    </select>
+  </div>
+
+  <button class="apply" (click)="apply(maxPrice.value, minPower.value, sort.value)">Apply</button>
+  <button class="reset" (click)="reset(maxPrice, minPower, sort)">Reset</button>
+</div>

@@ -1,0 +1,32 @@
+<div class="search-tools">
+  <div class="container">
+    <label for="car-search">Find a car</label>
+    <input id="car-search" type="text" #brand
+           placeholder="Search by brand or model..."
+           [value]="currentBrand"
+           (input)="selectAutos(brand.value)">
+    <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+    <button class="clear-search" type="button" (click)="clearSearch(brand)" aria-label="Clear search">Clear</button>
+  </div>
+
+  <div class="quick-filters" aria-label="Quick filters">
+    <button type="button" class="filter-chip" [class.active]="favoritesOnly"
+            (click)="toggleFavoritesOnly()">♡ Favorites</button>
+    <button type="button" class="filter-chip" [class.active]="availableOnly"
+            (click)="toggleAvailableOnly()">In stock</button>
+    <span class="results-count">{{ selectedAutos.length }} vehicles</span>
+  </div>
+</div>
+
+<div class="cars-container">
+  @for (auto of selectedAutos; track auto.id) {
+    <app-car-card
+      [car]="auto"
+      [isFavorite]="favorites.includes(auto)"
+      (onSelect)="selectCar($event)"
+      (onToggleFavorite)="toggleFavorite($event)">
+    </app-car-card>
+  } @empty {
+    <p class="empty">No cars match your search. Try changing your filters.</p>
+  }
+</div>

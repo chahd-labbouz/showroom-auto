@@ -1,0 +1,26 @@
+/* Global styles — clean luxury automotive showroom */
+:root {
+  color-scheme: light;
+  --page: #f4f4f2;
+  --surface: #ffffff;
+  --ink: #111315;
+  --muted: #62676d;
+  --line: #dedfdf;
+  --accent: #111315;
+  --accent-hover: #34383d;
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--page);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+::selection { color: #fff; background: #25282c; }
+:focus-visible { outline: 2px solid #34383d; outline-offset: 3px; }
